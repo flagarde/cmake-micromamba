@@ -1,21 +1,17 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(mamba-test)
 
-include(micromamba.cmake)
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_SOURCE_DIR}/cmake")
 
-ensure_micromamba(MICROMAMBA_BIN)
+project(mamba-test LANGUAGES NONE)
 
-micromamba_environment(
-CHANNELS
-	conda-forge
-	# robostack
-DEPENDENCIES
-	spdlog
-)
+include(Micromamba.cmake)
+micromamba()
+micromamba_environment(CHANNELS conda-forge DEPENDENCIES fmt)
 
-set(CMAKE_CXX_STANDARD 17)
-find_package(spdlog REQUIRED)
+enable_language(CXX)
+
+find_package(fmt REQUIRED)
 
 add_executable(test src/test.cpp)
-target_link_libraries(test spdlog)
+target_link_libraries(test fmt::fmt)

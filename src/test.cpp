@@ -1,7 +1,6 @@
-#include "spdlog/spdlog.h"
+#include "fmt/format.h"
 
 int main()
 {
-    spdlog::info("Welcome to spdlog!");
-    spdlog::error("Some error message with arg: {}", 1);
+ fmt::print("Welcome to fmt!\n");
 }
