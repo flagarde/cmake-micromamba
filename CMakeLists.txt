@@ -1,17 +1,21 @@
 cmake_minimum_required(VERSION 3.2)
 
-
-set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_SOURCE_DIR}/cmake")
-
 project(mamba-test LANGUAGES NONE)
 
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${PROJECT_SOURCE_DIR}/cmake")
+
+option(BUILD_TESTS "Build the tests" OFF)
+
 include(Micromamba.cmake)
-micromamba()
-micromamba_environment(CHANNELS conda-forge DEPENDENCIES fmt)
 
-enable_language(CXX)
+if(BUILD_TESTS)
+  micromamba()
+  micromamba_environment(CHANNELS conda-forge DEPENDENCIES fmt)
 
-find_package(fmt REQUIRED)
+  enable_language(CXX)
 
-add_executable(test src/test.cpp)
-target_link_libraries(test fmt::fmt)
+  find_package(fmt REQUIRED)
+
+  add_executable(test src/test.cpp)
+  target_link_libraries(test fmt::fmt)
+endif()
