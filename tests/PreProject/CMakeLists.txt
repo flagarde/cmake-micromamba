@@ -7,9 +7,7 @@ if(POLICY CMP0054)
 endif()
 
 include(FetchContent)
-FetchContent_Declare(cmake-micromamba
-                     GIT_REPOSITORY https://github.com/flagarde/cmake-micromamba.git
-                     GIT_TAG        main)
+FetchContent_Declare(cmake-micromamba GIT_REPOSITORY https://github.com/flagarde/cmake-micromamba.git GIT_TAG main)
 FetchContent_MakeAvailable(cmake-micromamba)
 
 project(PreProject LANGUAGES NONE)
