@@ -40,7 +40,7 @@ if(MICROMAMBA_ROOT)
 endif()
 
 find_program(MICROMAMBA_EXECUTABLE
-  NAMES micromamba micromamba.exe NAMES_PER_DIR
+  NAMES micromamba micromamba.exe
   HINTS "${MICROMAMBA_SEARCHES}"
   PATH_SUFFIXES bin Library/bin
   DOC "clang-format executable")
