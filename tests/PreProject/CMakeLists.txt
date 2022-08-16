@@ -8,7 +8,11 @@ endif()
 
 include(FetchContent)
 FetchContent_Declare(cmake-micromamba GIT_REPOSITORY https://github.com/flagarde/cmake-micromamba.git GIT_TAG main)
-FetchContent_MakeAvailable(cmake-micromamba)
+FetchContent_GetProperties(cmake-micromamba)
+if(NOT cmake-micromamba_POPULATED)
+  FetchContent_Populate(cmake-micromamba)
+  add_subdirectory(${cmake-micromamba_SOURCE_DIR} ${cmake-micromamba_BINARY_DIR})
+endif()
 
 project(PreProject LANGUAGES NONE)
 
