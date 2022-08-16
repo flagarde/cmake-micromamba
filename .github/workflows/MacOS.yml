@@ -1,5 +1,5 @@
 ---
-name: Test on Ubuntu
+name: Test on MacOS
 
 on:
   push:
