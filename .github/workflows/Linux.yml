@@ -52,9 +52,9 @@ jobs:
 
     - name: 🔧 Configure
       run: |
-        cmake -E make_directory ${{ env.GITHUB_WORKSPACE }}/build
+        cmake -E make_directory ./build
         cmake -D CMAKE_BUILD_TYPE=Release -D BUILD_TESTS=ON ./tests
-      working-directory: ${{ env.GITHUB_WORKSPACE }}/build
+      working-directory: ./build
 
     - name: ⚙️ Build
       run: cmake --build ./build --config Release --parallel 2
