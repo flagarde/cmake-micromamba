@@ -51,10 +51,7 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: 🔧 Configure
-      run: |
-        cmake -E make_directory ./build
-        cmake -D CMAKE_BUILD_TYPE=Release -D BUILD_TESTS=ON ./tests
-      working-directory: ./build
+      run: cmake -D CMAKE_BUILD_TYPE=Release -D BUILD_TESTS=ON ./tests
 
     - name: ⚙️ Build
       run: cmake --build ./build --config Release --parallel 2
