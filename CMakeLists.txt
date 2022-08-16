@@ -1,4 +1,10 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+
+cmake_policy(PUSH)
+
+if(POLICY CMP0054)
+  cmake_policy(SET CMP0054 NEW)
+endif()
 
 project(cmake-micromamba LANGUAGES NONE)
 
@@ -11,3 +17,5 @@ include(Micromamba)
 if(BUILD_TESTS)
   add_subdirectory(tests)
 endif()
+
+cmake_policy(POP)

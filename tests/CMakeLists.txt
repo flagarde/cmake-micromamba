@@ -1,9 +1,6 @@
-micromamba()
-micromamba_environment(CHANNELS conda-forge DEPENDENCIES fmt)
+message(STATUS "Test \"Standard\"")
+add_subdirectory(Standard)
 
-enable_language(CXX)
-
-find_package(fmt REQUIRED)
-
-add_executable(cmake_mamba_fmt.test src/test.cpp)
-target_link_libraries(cmake_mamba_fmt.test fmt::fmt)
+message(STATUS "Test \"PreProject\"")
+execute_process(COMMAND ${CMAKE_COMMAND} -B "${CMAKE_CURRENT_BINARY_DIR}/PreProject" -S "${CMAKE_CURRENT_SOURCE_DIR}/PreProject")
+execute_process(COMMAND ${CMAKE_COMMAND} --build "${CMAKE_CURRENT_BINARY_DIR}/PreProject")
