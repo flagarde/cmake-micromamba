@@ -50,6 +50,11 @@ jobs:
         cmake-version: ${{ matrix.cmake-version }}
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Setup XCode
+      uses: maxim-lobanov/setup-xcode@v1.4.1
+      with:
+        xcode-version: 9.1
+
     - name: 🔧 Configure
       run: cmake -D CMAKE_BUILD_TYPE=Release -D BUILD_TESTS=ON .
 

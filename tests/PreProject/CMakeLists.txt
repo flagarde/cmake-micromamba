@@ -21,15 +21,17 @@ endif()
 
 project(PreProject LANGUAGES NONE)
 
+message(STATUS "$ENV{CONDA_PREFIX} $ENV{MAMBA_ROOT_PREFIX}")
 micromamba()
 micromamba_environment(CHANNELS conda-forge DEPENDENCIES cxx-compiler fmt)
-
+message(STATUS "$ENV{CONDA_PREFIX} $ENV{MAMBA_ROOT_PREFIX}")
 enable_language(CXX)
 
 find_package(fmt REQUIRED)
 
 add_executable(cmake_mamba_fmt.test main.cpp)
 target_link_libraries(cmake_mamba_fmt.test fmt::fmt)
+
 install(TARGETS cmake_mamba_fmt.test RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/install")
 
 cmake_policy(POP)
