@@ -1,5 +1,5 @@
 # Distributed under the MIT license.
-# See accompanying file LICENSE or https://github.com/flagarde/CMakeCM/blob/main/LICENSE for details.
+# See accompanying file LICENSE or https://github.com/flagarde/cmake-micromamba/blob/main/LICENSE for details.
 
 #[=======================================================================[.rst:
 FindMicromamba
@@ -32,7 +32,6 @@ A user may set ``MICROMAMBA_ROOT`` to a micromamba installation root to tell thi
 include(FindPackageHandleStandardArgs)
 
 # Search MICROMAMBA_ROOT first if it is set.
-
 if(MICROMAMBA_ROOT)
   get_filename_component(MICROMAMBA_ROOT "${MICROMAMBA_ROOT}" ABSOLUTE)
   set(MICROMAMBA_SEARCH_ROOT "${MICROMAMBA_ROOT}")
@@ -43,7 +42,7 @@ find_program(MICROMAMBA_EXECUTABLE
   NAMES micromamba micromamba.exe
   HINTS "${MICROMAMBA_SEARCHES}"
   PATH_SUFFIXES bin Library/bin
-  DOC "clang-format executable")
+  DOC "micromamba executable")
 
 if(NOT MICROMAMBA_EXECUTABLE STREQUAL MICROMAMBA_EXECUTABLE-NOTFOUND)
   execute_process(COMMAND ${MICROMAMBA_EXECUTABLE} --version OUTPUT_VARIABLE MICROMAMBA_VERSION)

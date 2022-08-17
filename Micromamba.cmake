@@ -111,7 +111,7 @@ function(micromamba)
   else()
     find_package(Micromamba QUIET)
     if(NOT Micromamba_FOUND)
-      message(STATUS "Installing it to ${MICROMAMBA_DESTINATION}")
+      message(STATUS "Installing micromamba version ${MICROMAMBA_VERSION} to ${MICROMAMBA_DESTINATION}")
       download_micromamba(DESTINATION ${MICROMAMBA_DESTINATION} VERSION ${MICROMAMBA_VERSION})
       set(MICROMAMBA_ROOT ${DESTINATION})
       find_package(Micromamba REQUIRED)
@@ -121,7 +121,7 @@ endfunction()
 
 # Setup micromamba environment
 macro(micromamba_environment)
-  message("Installing dependencies from channels:")
+  message("Installing dependencies from channels :")
 
   cmake_parse_arguments(PARSED_ARGS "" "" "CHANNELS;DEPENDENCIES" ${ARGN})
 
