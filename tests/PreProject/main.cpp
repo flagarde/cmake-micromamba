@@ -1,1 +1,3 @@
-int main() { return 0; }
+#include "fmt/format.h"
+
+int main() { fmt::print("Welcome to fmt!\n"); }

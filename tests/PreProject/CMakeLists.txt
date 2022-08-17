@@ -22,11 +22,14 @@ endif()
 project(PreProject LANGUAGES NONE)
 
 micromamba()
-micromamba_environment(CHANNELS conda-forge DEPENDENCIES compilers)
+micromamba_environment(CHANNELS conda-forge DEPENDENCIES cxx-compiler fmt)
 
 enable_language(CXX)
 
+find_package(fmt REQUIRED)
+
 add_executable(main main.cpp)
+target_link_libraries(main PRIVATE fmt::fmt)
 install(TARGETS main RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/PreProject")
 
 cmake_policy(POP)
