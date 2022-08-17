@@ -28,8 +28,9 @@ enable_language(CXX)
 
 find_package(fmt REQUIRED)
 
-add_executable(main main.cpp)
-target_link_libraries(main PRIVATE fmt::fmt)
-install(TARGETS main RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/PreProject")
+find_package(fmt REQUIRED)
+add_executable(cmake_mamba_fmt.test main.cpp)
+target_link_libraries(cmake_mamba_fmt.test fmt::fmt)
+install(TARGETS cmake_mamba_fmt.test)
 
 cmake_policy(POP)
