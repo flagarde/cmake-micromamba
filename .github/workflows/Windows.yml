@@ -46,9 +46,8 @@ jobs:
 
     - name: Setup MSVC
       uses: TheMrMilchmann/setup-msvc-dev@v2
-
-    - name: Set up Visual Studio shell
-      uses: egor-tensin/vs-shell@v2
+      with:
+        arch: x64
 
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.12
