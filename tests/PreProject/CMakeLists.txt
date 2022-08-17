@@ -31,6 +31,6 @@ find_package(fmt REQUIRED)
 find_package(fmt REQUIRED)
 add_executable(cmake_mamba_fmt.test main.cpp)
 target_link_libraries(cmake_mamba_fmt.test fmt::fmt)
-install(TARGETS cmake_mamba_fmt.test)
+install(TARGETS cmake_mamba_fmt.test RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/install")
 
 cmake_policy(POP)
