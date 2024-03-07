@@ -10,9 +10,7 @@ project(cmake-micromamba VERSION 1.0 LANGUAGES NONE)
 set(PROJECT_DESCRIPTION "Install dependencies using micromamba directly from a CMake script")
 set(PROJECT_HOMEPAGE_URL "https://github.com/flagarde/cmake-micromamba")
 
-set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
-message(STATUS "HHH : ${CMAKE_MODULE_PATH}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 option(BUILD_TESTS "Build the tests" OFF)
 
