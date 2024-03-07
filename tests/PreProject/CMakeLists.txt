@@ -21,8 +21,6 @@ else()
   FetchContent_MakeAvailable(cmake-micromamba)
 endif()
 
-message(STATUS "HHH2 : ${CMAKE_MODULE_PATH}")
-
 message(STATUS "$ENV{CONDA_PREFIX} $ENV{MAMBA_ROOT_PREFIX}")
 micromamba(VERSION 1.5.7-0)
 micromamba_environment(CHANNELS conda-forge DEPENDENCIES cxx-compiler fmt)
