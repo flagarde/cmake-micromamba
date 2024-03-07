@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.0...${CMAKE_VERSION} FATAL_ERROR)
 
+project(PreProject LANGUAGES NONE)
+
 cmake_policy(PUSH)
 
 if(POLICY CMP0054)
@@ -18,8 +20,6 @@ if(${CMAKE_VERSION} VERSION_LESS 3.14)
 else()
   FetchContent_MakeAvailable(cmake-micromamba)
 endif()
-
-project(PreProject LANGUAGES NONE)
 
 message(STATUS "HHH2 : ${CMAKE_MODULE_PATH}")
 
