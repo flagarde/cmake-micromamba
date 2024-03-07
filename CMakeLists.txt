@@ -6,7 +6,9 @@ if(POLICY CMP0054)
   cmake_policy(SET CMP0054 NEW)
 endif()
 
-project(cmake-micromamba VERSION 1.0 DESCRIPTION "Install dependencies using micromamba directly from a CMake script" HOMEPAGE_URL "https://github.com/flagarde/cmake-micromamba" LANGUAGES NONE)
+project(cmake-micromamba VERSION 1.0 LANGUAGES NONE)
+set(PROJECT_DESCRIPTION "Install dependencies using micromamba directly from a CMake script")
+set(PROJECT_HOMEPAGE_URL "https://github.com/flagarde/cmake-micromamba")
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
