@@ -1,5 +1,5 @@
 project(fmt-tests LANGUAGES C CXX)
-micromamba(VERSION 1.0.0-1 SHOW_PROGRESS)
+micromamba(VERSION 1.0.0-1)
 micromamba_environment(CHANNELS conda-forge DEPENDENCIES fmt)
 find_package(fmt REQUIRED)
 add_executable(cmake_mamba_fmt.test "${CMAKE_CURRENT_SOURCE_DIR}/PreProject/main.cpp")
