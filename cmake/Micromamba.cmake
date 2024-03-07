@@ -127,7 +127,7 @@ function(micromamba)
     string(SUBSTRING "${MICROMAMBA_VERSION}" 0 ${REPLACED_VERSION} REPLACED_VERSION)
   endif()
 
-  list(APPEND CMAKE_MODULE_LIST "${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
+  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
   if(MICROMAMBA_STANDALONE)
     download_micromamba("${ARGN}")
     set(Micromamba_ROOT "${MICROMAMBA_DESTINATION}")
@@ -151,6 +151,7 @@ macro(micromamba_environment)
 
   cmake_parse_arguments(PARSED_ARGS "" "" "CHANNELS;DEPENDENCIES" ${ARGN})
 
+  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
   find_package(Micromamba QUIET)
   if(NOT Micromamba_FOUND)
     message(FATAL_ERROR "Could NOT find Micromamba v${MICROMAMBA_VERSION} ! Use micromamba function !")
