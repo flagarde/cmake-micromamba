@@ -152,6 +152,7 @@ macro(micromamba_environment)
   cmake_parse_arguments(PARSED_ARGS "" "" "CHANNELS;DEPENDENCIES" ${ARGN})
 
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
+  set(Micromamba_ROOT "${MICROMAMBA_DESTINATION}")
   find_package(Micromamba QUIET)
   if(NOT Micromamba_FOUND)
     message(FATAL_ERROR "Could NOT find Micromamba v${MICROMAMBA_VERSION} ! Use micromamba function !")
