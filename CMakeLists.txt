@@ -12,6 +12,8 @@ set(PROJECT_HOMEPAGE_URL "https://github.com/flagarde/cmake-micromamba")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
+message(STATUS "HHH : ${CMAKE_MODULE_PATH}")
+
 option(BUILD_TESTS "Build the tests" OFF)
 
 include(Micromamba)
