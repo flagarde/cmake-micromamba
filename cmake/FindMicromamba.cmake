@@ -48,9 +48,9 @@ if(NOT Micromamba_EXECUTABLE STREQUAL Micromamba_EXECUTABLE-NOTFOUND)
   execute_process(COMMAND ${Micromamba_EXECUTABLE} --version OUTPUT_VARIABLE Micromamba_VERSION)
   string(STRIP ${Micromamba_VERSION} Micromamba_VERSION)
 
-  if(NOT TARGET micromamba::micromamba)
-    add_executable(micromamba::micromamba IMPORTED)
-    set_property(TARGET micromamba::micromamba PROPERTY IMPORTED_LOCATION "${Micromamba_EXECUTABLE}")
+  if(NOT TARGET Micromamba::Micromamba)
+    add_executable(Micromamba::Micromamba IMPORTED)
+    set_property(TARGET Micromamba::Micromamba PROPERTY IMPORTED_LOCATION "${Micromamba_EXECUTABLE}")
   endif()
 endif()
 

@@ -151,6 +151,6 @@ macro(micromamba_environment)
     list(APPEND CHANNEL_ARG ${Channel})
   endforeach()
 
-  execute_process(COMMAND ${MICROMAMBA_EXECUTABLE} create -p "${CMAKE_BINARY_DIR}/environment" ${CHANNEL_ARG} ${PARSED_ARGS_DEPENDENCIES} --yes)
   list(APPEND CMAKE_PREFIX_PATH "${CMAKE_BINARY_DIR}/environment")
+  execute_process(COMMAND ${Micromamba_EXECUTABLE} create -p "${CMAKE_BINARY_DIR}/environment" ${CHANNEL_ARG} ${PARSED_ARGS_DEPENDENCIES} --yes)
 endmacro()
