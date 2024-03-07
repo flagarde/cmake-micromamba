@@ -32,33 +32,33 @@ A user may set ``MICROMAMBA_ROOT`` to a micromamba installation root to tell thi
 include(FindPackageHandleStandardArgs)
 
 # Search MICROMAMBA_ROOT first if it is set.
-if(MICROMAMBA_ROOT)
-  get_filename_component(MICROMAMBA_ROOT "${MICROMAMBA_ROOT}" ABSOLUTE)
-  set(MICROMAMBA_SEARCH_ROOT "${MICROMAMBA_ROOT}")
+if(Micromamba_ROOT)
+  get_filename_component(Micromamba_ROOT "${Micromamba_ROOT}" ABSOLUTE)
+  set(MICROMAMBA_SEARCH_ROOT "${Micromamba_ROOT}")
   list(APPEND MICROMAMBA_SEARCHES ${MICROMAMBA_SEARCH_ROOT})
 endif()
 
-find_program(MICROMAMBA_EXECUTABLE
+find_program(Micromamba_EXECUTABLE
   NAMES micromamba micromamba.exe
   HINTS "${MICROMAMBA_SEARCHES}"
   PATH_SUFFIXES bin Library/bin
   DOC "micromamba executable")
 
-if(NOT MICROMAMBA_EXECUTABLE STREQUAL MICROMAMBA_EXECUTABLE-NOTFOUND)
-  execute_process(COMMAND ${MICROMAMBA_EXECUTABLE} --version OUTPUT_VARIABLE MICROMAMBA_VERSION)
-  string(STRIP ${MICROMAMBA_VERSION} MICROMAMBA_VERSION)
+if(NOT Micromamba_EXECUTABLE STREQUAL Micromamba_EXECUTABLE-NOTFOUND)
+  execute_process(COMMAND ${Micromamba_EXECUTABLE} --version OUTPUT_VARIABLE Micromamba_VERSION)
+  string(STRIP ${Micromamba_VERSION} Micromamba_VERSION)
 
   if(NOT TARGET micromamba::micromamba)
     add_executable(micromamba::micromamba IMPORTED)
-    set_property(TARGET micromamba::micromamba PROPERTY IMPORTED_LOCATION "${MICROMAMBA_EXECUTABLE}")
+    set_property(TARGET micromamba::micromamba PROPERTY IMPORTED_LOCATION "${Micromamba_EXECUTABLE}")
   endif()
 endif()
 
 unset(MICROMAMBA_SEARCHES)
 unset(MICROMAMBA_SEARCH_ROOT)
 if(${CMAKE_VERSION} VERSION_LESS 3.19)
-  find_package_handle_standard_args(Micromamba REQUIRED_VARS MICROMAMBA_EXECUTABLE MICROMAMBA_VERSION VERSION_VAR MICROMAMBA_VERSION)
+  find_package_handle_standard_args(Micromamba REQUIRED_VARS Micromamba_EXECUTABLE Micromamba_VERSION VERSION_VAR Micromamba_VERSION)
 else()
-  find_package_handle_standard_args(Micromamba REQUIRED_VARS MICROMAMBA_EXECUTABLE MICROMAMBA_VERSION VERSION_VAR MICROMAMBA_VERSION HANDLE_VERSION_RANGE)
+  find_package_handle_standard_args(Micromamba REQUIRED_VARS Micromamba_EXECUTABLE Micromamba_VERSION VERSION_VAR Micromamba_VERSION HANDLE_VERSION_RANGE)
 endif()
-mark_as_advanced(MICROMAMBA_EXECUTABLE MICROMAMBA_VERSION)
+mark_as_advanced(Micromamba_EXECUTABLE Micromamba_VERSION)

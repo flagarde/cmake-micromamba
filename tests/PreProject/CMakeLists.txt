@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.0...${CMAKE_VERSION} FATAL_ERROR)
 
 cmake_policy(PUSH)
 
@@ -22,7 +22,7 @@ endif()
 project(PreProject LANGUAGES NONE)
 
 message(STATUS "$ENV{CONDA_PREFIX} $ENV{MAMBA_ROOT_PREFIX}")
-micromamba()
+micromamba(VERSION 1.5.7-0)
 micromamba_environment(CHANNELS conda-forge DEPENDENCIES cxx-compiler fmt)
 message(STATUS "$ENV{CONDA_PREFIX} $ENV{MAMBA_ROOT_PREFIX}")
 enable_language(CXX)
