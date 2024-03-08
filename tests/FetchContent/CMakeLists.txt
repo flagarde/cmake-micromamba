@@ -11,6 +11,7 @@ endif()
 include(FetchContent)
 FetchContent_Declare(cmake-micromamba GIT_REPOSITORY https://github.com/flagarde/cmake-micromamba.git GIT_TAG main)
 
+set(BUILD_TESTS OFF) # To avoid endless loop.
 if(${CMAKE_VERSION} VERSION_LESS 3.14)
   FetchContent_GetProperties(cmake-micromamba)
   if(NOT cmake-micromamba_POPULATED)

@@ -42,7 +42,7 @@ find_program(Micromamba_EXECUTABLE
   NAMES micromamba micromamba.exe
   HINTS "${MICROMAMBA_SEARCHES}"
   PATH_SUFFIXES bin Library/bin
-  DOC "micromamba executable")
+  DOC "Micromamba executable")
 
 if(NOT Micromamba_EXECUTABLE STREQUAL Micromamba_EXECUTABLE-NOTFOUND)
   execute_process(COMMAND ${Micromamba_EXECUTABLE} --version OUTPUT_VARIABLE Micromamba_VERSION)
@@ -50,8 +50,8 @@ if(NOT Micromamba_EXECUTABLE STREQUAL Micromamba_EXECUTABLE-NOTFOUND)
 
   if(NOT TARGET Micromamba::Micromamba)
     add_executable(Micromamba::Micromamba IMPORTED)
-    set_property(TARGET Micromamba::Micromamba PROPERTY IMPORTED_LOCATION "${Micromamba_EXECUTABLE}")
   endif()
+  set_property(TARGET Micromamba::Micromamba PROPERTY IMPORTED_LOCATION "${Micromamba_EXECUTABLE}")
 endif()
 
 unset(MICROMAMBA_SEARCHES)
