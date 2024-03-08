@@ -1,14 +1,13 @@
-project(fmt-tests LANGUAGES C CXX)
+project(cmake-micromamba LANGUAGES C CXX)
+
 micromamba(VERSION 1.0.0-1)
 micromamba_environment(CHANNELS conda-forge DEPENDENCIES fmt)
-find_package(fmt REQUIRED)
-add_executable(cmake_mamba_fmt.test "${CMAKE_CURRENT_SOURCE_DIR}/PreProject/main.cpp")
-target_link_libraries(cmake_mamba_fmt.test fmt::fmt)
-install(TARGETS cmake_mamba_fmt.test RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/install")
 
-if(${CMAKE_VERSION} VERSION_LESS 3.11)
-else()
-  message(STATUS "[cmake-micromamba:test] \"PreProject\"")
-  execute_process(COMMAND ${CMAKE_COMMAND} -B "${CMAKE_CURRENT_BINARY_DIR}/PreProject" -S "${CMAKE_CURRENT_SOURCE_DIR}/PreProject")
-  execute_process(COMMAND ${CMAKE_COMMAND} --build "${CMAKE_CURRENT_BINARY_DIR}/PreProject")
+find_package(fmt REQUIRED)
+add_executable(cmake-micromamba.test "${CMAKE_CURRENT_SOURCE_DIR}/PreProject/main.cpp")
+target_link_libraries(cmake-micromamba.test fmt::fmt)
+install(TARGETS cmake-micromamba.test RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/install")
+
+if("${CMAKE_VERSION}" VERSION_GREATER 3.11)
+  add_subdirectory(FetchContent)
 endif()

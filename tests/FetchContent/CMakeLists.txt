@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0...${CMAKE_VERSION} FATAL_ERROR)
 
-project(PreProject LANGUAGES NONE)
+project(FetchContentTest LANGUAGES NONE)
 
 cmake_policy(PUSH)
 
@@ -21,17 +21,14 @@ else()
   FetchContent_MakeAvailable(cmake-micromamba)
 endif()
 
-message(STATUS "$ENV{CONDA_PREFIX} $ENV{MAMBA_ROOT_PREFIX}")
 micromamba(VERSION 1.5.7-0)
-micromamba_environment(CHANNELS conda-forge DEPENDENCIES cxx-compiler fmt)
-message(STATUS "$ENV{CONDA_PREFIX} $ENV{MAMBA_ROOT_PREFIX}")
-enable_language(CXX)
+micromamba_environment(CHANNELS conda-forge DEPENDENCIES fmt)
 
 find_package(fmt REQUIRED)
 
-add_executable(cmake_mamba_fmt.test main.cpp)
-target_link_libraries(cmake_mamba_fmt.test fmt::fmt)
+add_executable(cmake-micromamba_fetchcontent.test main.cpp)
+target_link_libraries(cmake-micromamba_fetchcontent.test fmt::fmt)
 
-install(TARGETS cmake_mamba_fmt.test RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/install")
+install(TARGETS cmake-micromamba_fetchcontent.test RUNTIME DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/install")
 
 cmake_policy(POP)
