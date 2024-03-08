@@ -45,7 +45,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Fix 
-      run: sudo apt-get -qq install --no-install-recommends -y libidn11-dev
+      run: sudo apt-get -qq install --no-install-recommends -y libidn11-dev libidn12 libidn-dev libidn ; sudo ln -s  /usr/lib/x86_64-linux-gnu/libidn.so.12 /usr/lib/x86_64-linux-gnu/libidn.so.11
       
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v2.0
