@@ -59,7 +59,7 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup XCode
-      uses: maxim-lobanov/setup-xcode@v1.6.0
+      uses: maxim-lobanov/setup-xcode@v1.7.0
       with:
         xcode-version: ${{ matrix.xcode-version }}
 
